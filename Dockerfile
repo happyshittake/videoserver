@@ -1,4 +1,4 @@
-FROM golang:1.8 as builder
+FROM golang:1.8
 
 WORKDIR /go/src/app
 COPY main.go .
@@ -9,7 +9,7 @@ FROM debian:stable-slim
 
 WORKDIR /app
 
-COPY --from=builder /go/src/app/app .
+COPY --from=0 /go/src/app/app .
 
 EXPOSE 8080
 
